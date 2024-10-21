@@ -1,12 +1,15 @@
+import pygame as pg 
 
-import pygame
-pygame.init()
+pg.init()
+screen = pg.display.set_mode((640,480))
+BG_COLOR = pg.Color('white')
+rect1 = pg.Rect(190,60,250,375)
 
 
 
 memory_images = []
 for filename in ['Spade.png', 'Diamond.png', 'Heart.png', 'Club.png']:
-    new_image = pygame.image.load( filename )
+    new_image = pg.image.load( filename )
     memory_images.append( new_image )
 
 
@@ -17,42 +20,42 @@ running = True
 while running:
 
     # Did the user click the window close button?
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
             running = False
 
+    screen.fill(BG_COLOR)
+    color = (0,0,0)
 
-    surface = pygame.display.set_mode([500, 500])
-
-    surf = pygame.Surface((50, 50))
-
-    surf.fill((0, 0, 0))
-    rect = surf.get_rect()
-
-    screen.blit(surf, (SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
-
-    # Draw surf at the new coordinates
-    pygame.display.flip()
-
-    color = (255,0,0)
-    pygame.draw.rect(surface, color, pygame.Rect(30, 30, 60, 60))
+    pg.draw.rect(screen, color,  rect1, 3)
 
 
-    # spade is 1st, diamond is 2nd, heart is 3rd club is 4th 
-    # if suitChoice == 'club': 
+# example edit to accomodate ur code, this was a test
+# image_count = len( memory_images )  # should be 16 for a 4x4 grid
+# random_locations = random.sample( range( image_count ), image_count )
+
+
+# for i in range( 16 ):
+#     x, y = grid_locations[ i ]
+#     image = memory_images[ random_locations[ i ] ]
+#     screen.blit( image, ( x, y ) )
+    
+
+    if suitChoice == 'club': 
+        
 
 
 
 
         
-    # elif suitChoice == 'diamond':
+    elif suitChoice == 'diamond':
 
-    # elif suitChoice == 'spade':
+    elif suitChoice == 'spade':
     
-    # elif suitChoice == 'heart':
+    elif suitChoice == 'heart':
     
-    # else:
-    #     break 
+    else:
+     break 
 
 
 
@@ -63,9 +66,9 @@ while running:
 
 
     
-    pygame.display.flip()
+    pg.display.flip()
 
 
 
-# pygame.quit()
+# pg.quit()
 
